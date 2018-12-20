@@ -3,13 +3,12 @@ package com.muralimanohar.autocalllog;
 import android.Manifest;
 import android.content.pm.PackageManager;
 import android.database.Cursor;
+import android.os.Bundle;
 import android.provider.CallLog;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.util.Log;
-import android.widget.ScrollView;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -18,7 +17,7 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Set;
 
-public class MainActivity extends AppCompatActivity {
+public class oldactivity extends AppCompatActivity {
 
     TextView call;
     @Override
@@ -30,8 +29,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-    //    ArrayList<String> contactmiss = new ArrayList<String>();
-    ArrayList<HashMap<String, String>> contactmiss = new ArrayList<HashMap<String, String>>();
+//    ArrayList<String> contactmiss = new ArrayList<String>();
+    ArrayList<HashMap<String, Integer>> contactmiss = new ArrayList<HashMap<String, Integer>>();
 
     ArrayList<contactdetails> contactdial = new ArrayList<contactdetails>();
     ArrayList<contactdetails> contactrecv = new ArrayList<contactdetails>();
@@ -39,7 +38,7 @@ public class MainActivity extends AppCompatActivity {
 
         final String[] NECESSARY_PERMISSIONS = new String[]{Manifest.permission.GET_ACCOUNTS};
 
-        if (ContextCompat.checkSelfPermission(MainActivity.this,
+        if (ContextCompat.checkSelfPermission(oldactivity.this,
                 Manifest.permission.GET_ACCOUNTS) == PackageManager.PERMISSION_GRANTED) {
             Log.i("message", "permision granted");
             //Permission is granted
@@ -49,7 +48,7 @@ public class MainActivity extends AppCompatActivity {
             //ask for permission
 
             ActivityCompat.requestPermissions(
-                    MainActivity.this,
+                    oldactivity.this,
                     NECESSARY_PERMISSIONS, 123);
         }
 //        StringBuffer sb = new StringBuffer();
@@ -84,14 +83,22 @@ public class MainActivity extends AppCompatActivity {
             if (dircode == 3) {
 
 
-                HashMap<String, String> data1 = new HashMap<String, String>();
-                data1.put("0",new String(phNumber));
-                data1.put("1",new String(dir));
+                HashMap<String, Integer> data1 = new HashMap<String, Integer>();
+                data1.put("0",new Integer(phNumber));
+                data1.put("1",new Integer(dir));
 //                data1.put("2",new Integer(callDayTime));
-                data1.put("3",new String(callDuration));
+                data1.put("3",new Integer(callDuration));
 
                 contactmiss.add(data1);
+//                contactmiss.add(phNumber);
+//                contactmiss.add(dir);
+//                contactmiss.add(callDate);
+//                contactmiss.add(callDuration);
 
+
+
+//                sb.append( "\nPhone Number:--- "+phNumber +" \nCall Type:--- "+dir+" \nCall Date:--- "+callDayTime+" \nCall duration in sec :--- "+callDuration );
+//                sb.append("\n----------------------------------");
             }
 //            else if (dircode == 2){
 //                sb.append( "\nPhone Number:--- "+phNumber +" \nCall Type:--- "+dir+" \nCall Date:--- "+callDayTime+" \nCall duration in sec :--- "+callDuration );
@@ -109,12 +116,12 @@ public class MainActivity extends AppCompatActivity {
         managedCursor.close();
         for (int i = 0; i < contactmiss.size(); i++)
         {
-            HashMap<String, String> tmpData = (HashMap<String, String>) contactmiss.get(i);
+            HashMap<String, Integer> tmpData = (HashMap<String, Integer>) contactmiss.get(i);
             Set<String> key = tmpData.keySet();
             Iterator it = key.iterator();
             while (it.hasNext()) {
                 String hmKey = (String)it.next();
-                String hmData = (String) tmpData.get(hmKey);
+                Integer hmData = (Integer) tmpData.get(hmKey);
 
                 call.setText("Key: "+hmKey +" & Data: "+hmData);
                 it.remove(); // avoids a ConcurrentModificationException
