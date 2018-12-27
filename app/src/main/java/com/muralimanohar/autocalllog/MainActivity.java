@@ -11,6 +11,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.widget.TextView;
 
+// comments
 import java.util.Date;
 
 public class MainActivity extends AppCompatActivity {
