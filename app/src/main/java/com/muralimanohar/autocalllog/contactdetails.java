@@ -1,11 +1,10 @@
 package com.muralimanohar.autocalllog;
 
 public class contactdetails {
-
-
     String number;
     String type;
     String date;
+    String duration;
 
     public String getNumber() {
         return number;
@@ -39,5 +38,5 @@ public class contactdetails {
         this.duration = duration;
     }
 
-    String duration;
+
 }

@@ -15,6 +15,110 @@
             android:layout_height="fill_parent"
             android:layout_width="fill_parent">
         </TextView>
+
+        <android.support.v7.widget.CardView
+            android:id="@+id/card_view"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:layout_marginTop="10dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:orientation="vertical">
+
+                    <www.seotoolzz.com.tabbed.TextViewImmacBytes
+                        android:id="@+id/text"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginTop="10dp"
+                        android:text="Discussion from Jenni and 14 Others!"
+                        android:textColor="@color/colorGray"
+                        android:textSize="15dp"
+                        android:textStyle="bold" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginTop="15dp"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal"
+                        android:weightSum="3">
+
+                        <www.seotoolzz.com.tabbed.TextViewImmacBytes
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1.5"
+                            android:text="15 new notifications today"
+                            android:textColor="@color/colorLightGray"
+                            android:textSize="11sp" />
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1.5"
+                            android:gravity="center_horizontal">
+
+                            <FrameLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center">
+
+                                <com.mikhaellopez.circularimageview.CircularImageView xmlns:app="http://schemas.android.com/apk/res-auto"
+                                    android:layout_width="35dp"
+                                    android:layout_height="35dp"
+                                    android:layout_weight="1"
+                                    android:src="@drawable/girl"
+                                    android:translationZ="2dp"
+                                    app:civ_border_color="@color/colorBackroundWhite"
+                                    app:civ_border_width="2dp" />
+
+                                <com.mikhaellopez.circularimageview.CircularImageView xmlns:app="http://schemas.android.com/apk/res-auto"
+                                    android:layout_width="35dp"
+                                    android:layout_height="35dp"
+                                    android:layout_marginLeft="25dp"
+                                    android:layout_weight="1"
+                                    android:src="@drawable/girl2"
+                                    android:translationZ="1dp"
+                                    app:civ_border_color="@color/colorBackroundWhite"
+                                    app:civ_border_width="2dp" />
+
+                                <com.mikhaellopez.circularimageview.CircularImageView xmlns:app="http://schemas.android.com/apk/res-auto"
+                                    android:layout_width="35dp"
+                                    android:layout_height="35dp"
+                                    android:layout_marginLeft="50dp"
+                                    android:layout_weight="1"
+                                    android:src="@drawable/girl3"
+                                    android:translationZ="0dp"
+                                    app:civ_border_color="@color/colorBackroundWhite"
+                                    app:civ_border_width="2dp" />
+
+                                <www.seotoolzz.com.tabbed.TextViewImmacBytes
+                                    android:layout_width="35dp"
+                                    android:layout_height="35dp"
+                                    android:layout_marginLeft="75dp"
+                                    android:background="@drawable/orange_circle"
+                                    android:gravity="center"
+                                    android:text="+12"
+                                    android:textColor="#ffffff"
+                                    android:textSize="12dp"
+                                    android:textStyle="bold" />
+
+                            </FrameLayout>
+                        </LinearLayout>
+
+
+                    </LinearLayout>
+                </LinearLayout>
+            </LinearLayout>
+        </android.support.v7.widget.CardView>
     </LinearLayout>
 </ScrollView>
 </android.support.constraint.ConstraintLayout>

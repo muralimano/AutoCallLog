@@ -11,17 +11,61 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.widget.TextView;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
-public class myactivitybackup extends AppCompatActivity {
-
+public class myactivitybackup extends  AppCompatActivity {
+    private static final int MY_PERMISSIONS_REQUEST_ACCOUNTS = 1;
     TextView call;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         call = findViewById(R.id.call);
+        checkAndRequestPermissions();
         getCallDetails();
+    }
+    // Check Necessary Permission
+    private boolean checkAndRequestPermissions() {
+        int readcontactPermission = ContextCompat.checkSelfPermission(this,
+                Manifest.permission.READ_CONTACTS);
+
+        int readphonestatePermission = ContextCompat.checkSelfPermission(this,
+                Manifest.permission.READ_PHONE_STATE);
+
+        int readphonelogPermission = ContextCompat.checkSelfPermission(this,
+                Manifest.permission.READ_CALL_LOG);
+
+        int writecalllogPermission = ContextCompat.checkSelfPermission(this,
+                Manifest.permission.WRITE_CALL_LOG);
+
+        int readexternalstoragePermission = ContextCompat.checkSelfPermission(this,
+                Manifest.permission.READ_EXTERNAL_STORAGE);
+
+        List<String> listPermissionsNeeded = new ArrayList<>();
+        if (readcontactPermission != PackageManager.PERMISSION_GRANTED) {
+            listPermissionsNeeded.add( Manifest.permission.READ_CONTACTS);
+        }
+        if (readphonestatePermission != PackageManager.PERMISSION_GRANTED) {
+            listPermissionsNeeded.add(Manifest.permission.READ_PHONE_STATE);
+        }
+        if (readphonelogPermission != PackageManager.PERMISSION_GRANTED) {
+            listPermissionsNeeded.add(Manifest.permission.READ_CALL_LOG);
+        }
+        if (writecalllogPermission != PackageManager.PERMISSION_GRANTED) {
+            listPermissionsNeeded.add( Manifest.permission.WRITE_CALL_LOG);
+        }
+        if (readexternalstoragePermission != PackageManager.PERMISSION_GRANTED) {
+            listPermissionsNeeded.add( Manifest.permission.READ_EXTERNAL_STORAGE);
+        }
+        if (!listPermissionsNeeded.isEmpty()) {
+            ActivityCompat.requestPermissions(this,
+                    listPermissionsNeeded.toArray(new String[listPermissionsNeeded.size()]), MY_PERMISSIONS_REQUEST_ACCOUNTS);
+            return false;
+        }
+
+        return true;
     }
 
     private void getCallDetails() {
