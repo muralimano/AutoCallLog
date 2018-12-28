@@ -13,6 +13,7 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -72,8 +73,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-    //    ArrayList<String> contactmiss = new ArrayList<String>();
-    ArrayList<contactdetails> contactmiss = new ArrayList<contactdetails>();
+       ArrayList<String> contactmiss = new ArrayList<String>();
 
 
     private void getCallDetails() {
@@ -87,10 +87,13 @@ public class MainActivity extends AppCompatActivity {
 //        sb.append( "Call Details :");
         while (managedCursor.moveToNext()) {
             String callType = managedCursor.getString(type);
+
             contactdetails contactdd = new contactdetails();
-            contactmiss.add(managedCursor.getString(number));
-            contactmiss.add(managedCursor.getString(duration));
-            contactmiss.add(managedCursor.getString(date));
+
+            contactmiss.add(Integer.toString(number));
+            contactmiss.add(Integer.toString(duration));
+            contactmiss.add(Integer.toString(date));
+
 //            String phNumber = managedCursor.getString(number);
 //            String callType = managedCursor.getString(type);
 //            String callDate = managedCursor.getString(date);
@@ -113,7 +116,7 @@ public class MainActivity extends AppCompatActivity {
                     contactmiss.add("MISSED");
                     break;
             }
-
+            contactdd.
 
             if (dircode == 3) {
 
@@ -123,9 +126,8 @@ public class MainActivity extends AppCompatActivity {
         }
         managedCursor.close();
 
-            call.setText(itr.next());
 
-//      call.setText(contactmiss);
+     call.setText(contactmiss);
 
 
     }
