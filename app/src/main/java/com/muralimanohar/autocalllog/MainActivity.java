@@ -73,7 +73,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-       ArrayList<String> contactmiss = new ArrayList<String>();
+       ArrayList<contactdetails> contactmiss = new ArrayList<contactdetails>();
 
 
     private void getCallDetails() {
@@ -89,11 +89,15 @@ public class MainActivity extends AppCompatActivity {
             String callType = managedCursor.getString(type);
 
             contactdetails contactdd = new contactdetails();
+            contactdd.setNumber(Integer.toString(number));
 
-            contactmiss.add(Integer.toString(number));
-            contactmiss.add(Integer.toString(duration));
-            contactmiss.add(Integer.toString(date));
 
+            contactdd.setNumber(Integer.toString(number));
+            contactdd.setDate(Integer.toString(date));
+            contactdd.setDuration(Integer.toString(duration));
+
+
+//            contactmiss.add(contactdd.setNumber(Integer.toString(number)));
 //            String phNumber = managedCursor.getString(number);
 //            String callType = managedCursor.getString(type);
 //            String callDate = managedCursor.getString(date);
@@ -105,18 +109,21 @@ public class MainActivity extends AppCompatActivity {
             int dircode = Integer.parseInt(callType);
             switch (dircode) {
                 case CallLog.Calls.OUTGOING_TYPE:
-                    contactmiss.add("OUTGOING");
+                    contactdd.setType("OUTGOING");
                     break;
 
                 case CallLog.Calls.INCOMING_TYPE:
-                    contactmiss.add("INCOMING");
+                    contactdd.setType("INCOMING");
                     break;
 
                 case CallLog.Calls.MISSED_TYPE:
-                    contactmiss.add("MISSED");
+                    contactdd.setType("MISSED");
                     break;
             }
-            contactdd.
+
+            contactmiss.add(contactdd);
+
+
 
             if (dircode == 3) {
 
@@ -124,6 +131,12 @@ public class MainActivity extends AppCompatActivity {
             }
 
         }
+
+        for (contactdetails temp : contactmiss) {
+            System.out.println(temp.getDate());
+
+        }
+
         managedCursor.close();
 
 
